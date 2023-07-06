@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<state xmlns="urn:probe:state">
+  <flowfile>
+    <attribute name="record.count">5</attribute>
+    <attribute name="mime.type">application/json</attribute>
+    <attribute name="uuid">cb2c994c-e537-4712-a126-32ba9fcafb29</attribute>
+    <content>WwogIHsKICAgICJHdWlkIjogIkU2MUFBQjVDLUM4MUQtNEUzQi1BQUEzLTgzOUYyNUVEQjEzOCIsCiAgICAiTmFtZSI6ICJGaXJzdEEgTGFzdEEiCiAgfSwKICB7CiAgICAiR3VpZCI6ICI5NTMxMkI5RC03MENELTQ5MjctQjk4OS1BOEMzRjNGQTk4OEUiLAogICAgIk5hbWUiOiAiRmlyc3RCIExhc3RCIgogIH0sCiAgewogICAgIkd1aWQiOiAiQjZBNTVCQzYtMDQ1QS00QTg4LUE4QUEtNTc3MjMyN0VFOUFEIiwKICAgICJOYW1lIjogIkZpcnN0QyBMYXN0QyIKICB9LAogIHsKICAgICJHdWlkIjogIjhGNUFCMUU3LUU4MDgtNDQ5RC1BNkQ2LTFGMjgxODhCREFCMSIsCiAgICAiTmFtZSI6ICJGaXJzdEQgTGFzdEQiCiAgfSwKICB7CiAgICAiR3VpZCI6ICI4QTJGNDZBQS1EQTdFLTQwODMtOTA0Qi00QTIwODM1MjcwQzQiLAogICAgIk5hbWUiOiAiRmlyc3RFIExhc3RFIgogIH0KXQo=</content>
+  </flowfile>
+</state>
