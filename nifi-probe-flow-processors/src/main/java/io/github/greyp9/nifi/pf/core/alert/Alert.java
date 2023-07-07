@@ -20,25 +20,21 @@ public class Alert {
     private final Date date;
     private final String message;
 
-    public Alert(final String message) {
-        this(Severity.INFO, new Date(), message);
-    }
-
     public Alert(final Severity severity, final Date date, final String message) {
         this.severity = severity;
         this.date = date;
         this.message = message;
     }
 
-    public Severity getSeverity() {
+    public final Severity getSeverity() {
         return severity;
     }
 
-    public Date getDate() {
+    public final Date getDate() {
         return date;
     }
 
-    public String getMessage() {
+    public final String getMessage() {
         return message;
     }
 

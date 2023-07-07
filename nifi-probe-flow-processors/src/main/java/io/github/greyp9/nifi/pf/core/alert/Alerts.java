@@ -23,11 +23,11 @@ public class Alerts {
         this.alerts = Collections.synchronizedList(new ArrayList<>());
     }
 
-    public void add(final Alert alert) {
+    public final void add(final Alert alert) {
         alerts.add(alert);
     }
 
-    public Collection<Alert> removeAll() {
+    public final Collection<Alert> removeAll() {
         final Collection<Alert> alertsCopy = new ArrayList<>(alerts);
         alerts.clear();
         return alertsCopy;

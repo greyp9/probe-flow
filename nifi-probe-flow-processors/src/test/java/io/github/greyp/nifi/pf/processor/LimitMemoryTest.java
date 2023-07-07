@@ -37,7 +37,7 @@ public class LimitMemoryTest {
         final byte[] data = new byte[1024];
         final ProbeFlowFile flowFile = processorState.create(System.currentTimeMillis(), Collections.emptyMap(), data);
 
-        processorState.addFlowFile(flowFile);
-        Assertions.assertThrows(ProcessException.class, () -> processorState.addFlowFile(flowFile));
+        processorState.addFlowFileProcessSession(flowFile);
+        Assertions.assertThrows(ProcessException.class, () -> processorState.addFlowFileProcessSession(flowFile));
     }
 }

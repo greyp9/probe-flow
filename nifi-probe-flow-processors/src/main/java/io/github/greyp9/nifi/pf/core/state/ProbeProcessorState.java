@@ -100,6 +100,7 @@ public final class ProbeProcessorState {
      * @param name          NiFi processor name
      * @param maxMemorySize Maximum size of FlowFile content held
      * @param relationships Set of {@link Relationship} configured for processor
+     * @param alerts        messages to present to user
      */
     public ProbeProcessorState(final String id, final String name, final long maxMemorySize,
                                final Set<Relationship> relationships, final Alerts alerts) {
