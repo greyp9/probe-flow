@@ -23,7 +23,7 @@ public interface ProbeFlowControllerService extends ControllerService {
 
     ProbeServiceState getProbeState();
 
-    ProbeProcessorState register(String id, String name, Set<Relationship> relationships);
+    ProbeProcessorState register(String id, String name, long maxMemorySize, Set<Relationship> relationships);
 
     void unregister(String id);
 }

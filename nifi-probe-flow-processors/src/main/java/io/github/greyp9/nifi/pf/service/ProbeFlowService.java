@@ -101,8 +101,9 @@ public final class ProbeFlowService extends AbstractControllerService implements
     }
 
     @Override
-    public ProbeProcessorState register(final String id, final String name, final Set<Relationship> relationships) {
-        return probeServiceState.register(id, name, relationships);
+    public ProbeProcessorState register(final String id, final String name,
+                                        final long maxMemorySize, final Set<Relationship> relationships) {
+        return probeServiceState.register(id, name, maxMemorySize, relationships);
     }
 
     @Override
@@ -119,7 +120,8 @@ public final class ProbeFlowService extends AbstractControllerService implements
                 context.getProperty(SSL_CONTEXT_SERVICE).asControllerService(SSLContextService.class);
         final String basicAuth = context.getProperty(BASIC_AUTH).getValue();
         final boolean certificateAuth = context.getProperty(ENABLE_CERTIFICATE_AUTH).asBoolean();
-        server = new ServerFactory().create(probeServiceState, port, sslContextService, basicAuth, certificateAuth);
+        server = new ServerFactory().create(probeServiceState,
+                port, MAX_UPLOAD_SIZE, sslContextService, basicAuth, certificateAuth);
 
         try {
             server.start();
@@ -146,4 +148,9 @@ public final class ProbeFlowService extends AbstractControllerService implements
 
         getLogger().info("onDisabled():FINISH");
     }
+
+    /**
+     * Size large enough to accommodate a large incoming payload.
+     */
+    private static final int MAX_UPLOAD_SIZE = 5 * 1024 * 1024;
 }

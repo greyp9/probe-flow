@@ -16,6 +16,7 @@ import io.github.greyp9.nifi.pf.core.common.Probe;
 import io.github.greyp9.nifi.pf.core.flowfile.ProbeFlowFile;
 import io.github.greyp9.nifi.pf.core.flowfile.ProbeFlowFileEditor;
 import org.apache.nifi.processor.Relationship;
+import org.apache.nifi.processor.exception.ProcessException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -66,6 +67,11 @@ public final class ProbeProcessorState {
     private final AtomicInteger countToConsume;
 
     /**
+     * Maximum size of FlowFile content held.
+     */
+    private final long maxMemorySize;
+
+    /**
      * Processor-internal storage for held FlowFiles.
      */
     private final LinkedBlockingQueue<ProbeFlowFile> flowFiles;
@@ -85,11 +91,14 @@ public final class ProbeProcessorState {
      *
      * @param id            NiFi processor identifier
      * @param name          NiFi processor name
+     * @param maxMemorySize Maximum size of FlowFile content held
      * @param relationships Set of {@link Relationship} configured for processor
      */
-    public ProbeProcessorState(final String id, final String name, final Set<Relationship> relationships) {
+    public ProbeProcessorState(final String id, final String name,
+                               final long maxMemorySize, final Set<Relationship> relationships) {
         this.processorId = id;
         this.processorName = name;
+        this.maxMemorySize = maxMemorySize;
         this.start = new Date();
         this.nextFlowFileId = new AtomicLong(0);
         this.countToConsume = new AtomicInteger(0);
@@ -173,13 +182,17 @@ public final class ProbeProcessorState {
         return new ProbeFlowFile(nextFlowFileId.incrementAndGet(), entryDate, attributes, data);
     }
 
-    public void createFlowFile(final ProbeFlowFile flowFile) {
+    public void addFlowFile(final ProbeFlowFile flowFile) {
+        final long memorySizeCurrent = flowFiles.stream().mapToLong(ff -> ff.getData().length).sum();
+        if ((memorySizeCurrent + flowFile.getData().length) > maxMemorySize) {
+            throw new ProcessException("processor memory limit exceeded");
+        }
         flowFiles.add(flowFile);
     }
 
     public void consumeFlowFile(final ProbeFlowFile flowFile) {
-        flowFiles.add(flowFile);
         countToConsume.decrementAndGet();
+        addFlowFile(flowFile);
     }
 
     public Optional<ProbeFlowFile> getFlowFile(final String idString) {
@@ -230,11 +243,12 @@ public final class ProbeProcessorState {
 
     private void cloneFlowFile(final long flowFileId) {
         final Optional<ProbeFlowFile> flowFile = flowFiles.stream().filter(ff -> ff.getId() == flowFileId).findFirst();
-        flowFile.ifPresent(ff -> createFlowFile(create(System.currentTimeMillis(), ff.getAttributes(), ff.getData())));
+        flowFile.ifPresent(ff -> addFlowFile(create(System.currentTimeMillis(), ff.getAttributes(), ff.getData())));
     }
 
     private void dropFlowFile(final long flowFileId) {
         final Optional<ProbeFlowFile> flowFile = flowFiles.stream().filter(ff -> ff.getId() == flowFileId).findFirst();
+        //noinspection ResultOfMethodCallIgnored
         flowFile.ifPresent(flowFiles::remove);
     }
 
@@ -258,7 +272,7 @@ public final class ProbeProcessorState {
     public void addState(final byte[] xml) throws IOException {
         final Collection<ProbeFlowFile> flowFilesIn = new ProbeSerializer().deserialize(xml);
         for (final ProbeFlowFile flowFile : flowFilesIn) {
-            createFlowFile(create(flowFile.getEntryDate(), flowFile.getAttributes(), flowFile.getData()));
+            addFlowFile(create(flowFile.getEntryDate(), flowFile.getAttributes(), flowFile.getData()));
         }
     }
 }

@@ -67,8 +67,10 @@ public final class ProbeServiceState {
         return start.toInstant().toString();
     }
 
-    public ProbeProcessorState register(final String pid, final String name, final Set<Relationship> relationships) {
-        final ProbeProcessorState probeProcessorState = new ProbeProcessorState(pid, name, relationships);
+    public ProbeProcessorState register(final String pid, final String name,
+                                        final long maxMemorySize, final Set<Relationship> relationships) {
+        final ProbeProcessorState probeProcessorState = new ProbeProcessorState(
+                pid, name, maxMemorySize, relationships);
         processorStates.put(pid, probeProcessorState);
         return probeProcessorState;
     }

@@ -48,7 +48,7 @@ public final class EditorUpdate {
         } else if (parameters.containsKey(Probe.App.CREATE)) {
             final Map<String, String> attributes = flowFileEditor.getAttributes();
             final byte[] content = flowFileEditor.getContent().toByteArray();
-            processorState.createFlowFile(processorState.create(System.currentTimeMillis(), attributes, content));
+            processorState.addFlowFile(processorState.create(System.currentTimeMillis(), attributes, content));
         } else if (parameters.containsKey(Probe.App.RESET)) {
             flowFileEditor.reset();
         }

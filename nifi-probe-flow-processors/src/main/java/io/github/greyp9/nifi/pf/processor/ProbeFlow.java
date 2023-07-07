@@ -30,6 +30,7 @@ import org.apache.nifi.components.RequiredPermission;
 import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.processor.AbstractProcessor;
+import org.apache.nifi.processor.DataUnit;
 import org.apache.nifi.processor.ProcessContext;
 import org.apache.nifi.processor.ProcessSession;
 import org.apache.nifi.processor.ProcessorInitializationContext;
@@ -59,6 +60,14 @@ import java.util.concurrent.atomic.AtomicReference;
 @TriggerWhenEmpty
 public final class ProbeFlow extends AbstractProcessor {
 
+    public static final PropertyDescriptor MAX_MEMORY_SIZE = new PropertyDescriptor.Builder()
+            .name("max.memory.size")
+            .displayName("Max Memory Size")
+            .description("Specifies the maximum size of FlowFile content held by processor.")
+            .required(true)
+            .addValidator(StandardValidators.DATA_SIZE_VALIDATOR)
+            .defaultValue("10 MB")
+            .build();
     public static final PropertyDescriptor RELATIONSHIPS = new PropertyDescriptor.Builder()
             .name("relationships")
             .displayName("Relationships")
@@ -80,7 +89,7 @@ public final class ProbeFlow extends AbstractProcessor {
             .build();
 
     private static final List<PropertyDescriptor> PROPERTY_DESCRIPTORS = Arrays.asList(
-            RELATIONSHIPS, CONTROLLER_SERVICE
+            MAX_MEMORY_SIZE, RELATIONSHIPS, CONTROLLER_SERVICE
     );
 
     @Override
@@ -108,10 +117,13 @@ public final class ProbeFlow extends AbstractProcessor {
     @OnScheduled
     public void onScheduled(final ProcessContext context) {
         getLogger().info("onScheduled()");
+        final long maxMemorySize = context.getProperty(MAX_MEMORY_SIZE).asDataSize(DataUnit.B).longValue();
         final ProbeFlowControllerService probeService =
                 context.getProperty(CONTROLLER_SERVICE).asControllerService(ProbeFlowControllerService.class);
         probeServiceState = probeService.getProbeState();
-        probeProcessorState = probeServiceState.register(getIdentifier(), context.getName(), getRelationships());
+
+        probeProcessorState = probeServiceState.register(
+                getIdentifier(), context.getName(), maxMemorySize, getRelationships());
     }
 
     @OnUnscheduled

@@ -35,6 +35,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <jetty.version>9.4.50.v20221201</jetty.version>
+        <junit.version>5.9.3</junit.version>
         <nifi.version>1.19.1</nifi.version>
     </properties>
 

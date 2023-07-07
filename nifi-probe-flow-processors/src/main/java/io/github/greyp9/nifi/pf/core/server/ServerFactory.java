@@ -42,7 +42,7 @@ public final class ServerFactory {
     public ServerFactory() {
     }
 
-    public Server create(final ProbeServiceState probeServiceState, final int port,
+    public Server create(final ProbeServiceState probeServiceState, final int port, final int maxUploadSize,
                          final SSLContextService sslContextService,
                          final String basicAuth, final boolean enableClientAuth) {
         final TlsConfiguration tlsConfiguration = sslContextService.createTlsConfiguration();
@@ -76,12 +76,12 @@ public final class ServerFactory {
         contextHandler.setAttribute(probeServiceState.getClass().getName(), probeServiceState);
         contextHandler.addServlet(RootServlet.class, "/*");
         contextHandler.addServlet(StateServlet.class, "/state/*").getRegistration()
-                .setMultipartConfig(new MultipartConfigElement(null, MAX_SIZE, MAX_SIZE, MAX_SIZE));
+                .setMultipartConfig(new MultipartConfigElement(null, maxUploadSize, maxUploadSize, maxUploadSize));
         contextHandler.addServlet(ViewerServlet.class, "/viewer/*");
         contextHandler.addServlet(EditorServlet.class, "/editor/*");
         contextHandler.addServlet(EditorServlet.class, "/editor/text/*");
         contextHandler.addServlet(EditorServlet.class, "/editor/file/*").getRegistration()
-                .setMultipartConfig(new MultipartConfigElement(null, MAX_SIZE, MAX_SIZE, MAX_SIZE));
+                .setMultipartConfig(new MultipartConfigElement(null, maxUploadSize, maxUploadSize, maxUploadSize));
 
         if (basicAuth != null) {
             final ConstraintSecurityHandler securityHandler = getSecurityHandler(server, basicAuth);
@@ -138,9 +138,4 @@ public final class ServerFactory {
      * The webapp role used for webapp access decisions.
      */
     private static final String[] APP_ROLES = new String[]{"ProbeFlow"};
-
-    /**
-     * Size large enough to accommodate a large incoming payload.
-     */
-    private static final int MAX_SIZE = 1_048_576;
 }
