@@ -46,6 +46,9 @@ public final class ServiceView {
         XmlUtils.addChild(divHeader, Probe.Html.P,
                 "NiFi was built to automate the flow of data between systems.  Use "
                 + "ProbeFlow service to help debug flow mechanics during flow development.");
+
+        XhtmlUtils.addAlerts(body, serviceState.getAlerts());
+
         final Element divContent = XmlUtils.addChild(body, Probe.Html.DIV,
                 new Attribute(Probe.Html.CLASS, Probe.CSS.CONTENT));
         addDivState(divContent);

@@ -48,6 +48,8 @@ public final class StateView {
                 new Attribute(Probe.Html.CLASS, Probe.CSS.HEADER));
         XmlUtils.addChild(divHeader, Probe.Html.H1, "Processor State");
 
+        XhtmlUtils.addAlerts(body, serviceState.getAlerts());
+
         final Element divContent = XmlUtils.addChild(body, Probe.Html.DIV,
                 new Attribute(Probe.Html.CLASS, Probe.CSS.CONTENT));
         addDivDownload(divContent, processorState);

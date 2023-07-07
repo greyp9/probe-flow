@@ -12,6 +12,7 @@
  */
 package io.github.greyp9.nifi.pf.core.state;
 
+import io.github.greyp9.nifi.pf.core.alert.Alerts;
 import org.apache.nifi.processor.Relationship;
 
 import java.util.Collection;
@@ -38,6 +39,11 @@ public final class ProbeServiceState {
     private final Date start;
 
     /**
+     * Messages to present to user.
+     */
+    private final Alerts alerts;
+
+    /**
      * Processors registered to this controller service.
      */
     private final Map<String, ProbeProcessorState> processorStates;
@@ -52,6 +58,7 @@ public final class ProbeServiceState {
         this.serviceId = id;
         this.serviceName = name;
         this.start = new Date();
+        this.alerts = new Alerts();
         this.processorStates = new HashMap<>();
     }
 
@@ -67,10 +74,14 @@ public final class ProbeServiceState {
         return start.toInstant().toString();
     }
 
+    public Alerts getAlerts() {
+        return alerts;
+    }
+
     public ProbeProcessorState register(final String pid, final String name,
                                         final long maxMemorySize, final Set<Relationship> relationships) {
         final ProbeProcessorState probeProcessorState = new ProbeProcessorState(
-                pid, name, maxMemorySize, relationships);
+                pid, name, maxMemorySize, relationships, alerts);
         processorStates.put(pid, probeProcessorState);
         return probeProcessorState;
     }

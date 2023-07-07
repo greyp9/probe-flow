@@ -1,0 +1,62 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE
+ * file distributed with this work for additional information regarding copyright ownership.  The ASF licenses this
+ * file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package io.github.greyp9.nifi.pf.core.alert;
+
+import java.util.Date;
+
+public class Alert {
+
+    private final Severity severity;
+    private final Date date;
+    private final String message;
+
+    public Alert(final String message) {
+        this(Severity.INFO, new Date(), message);
+    }
+
+    public Alert(final Severity severity, final Date date, final String message) {
+        this.severity = severity;
+        this.date = date;
+        this.message = message;
+    }
+
+    public Severity getSeverity() {
+        return severity;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public final String getIcon() {
+        String text;
+        if (severity == Severity.INFO) {
+            text = "[i]";
+        } else if (severity == Severity.WARN) {
+            text = "[!]";
+        } else if (severity == Severity.ERR) {
+            text = "[X]";
+        } else {
+            text = "[ ]";
+        }
+        return text;
+    }
+
+    public enum Severity {
+        INFO, WARN, ERR
+    }
+}

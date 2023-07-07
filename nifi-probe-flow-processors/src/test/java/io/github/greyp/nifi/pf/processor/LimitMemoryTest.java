@@ -12,6 +12,7 @@
  */
 package io.github.greyp.nifi.pf.processor;
 
+import io.github.greyp9.nifi.pf.core.alert.Alerts;
 import io.github.greyp9.nifi.pf.core.flowfile.ProbeFlowFile;
 import io.github.greyp9.nifi.pf.core.state.ProbeProcessorState;
 import io.github.greyp9.nifi.pf.processor.ProbeFlow;
@@ -30,7 +31,8 @@ public class LimitMemoryTest {
         final String pid = "pidA";
         final long maxMemorySize = 1536L;
         final Set<Relationship> relationships = Collections.singleton(ProbeFlow.REL_OUTGOING);
-        final ProbeProcessorState processorState = new ProbeProcessorState(pid, pid, maxMemorySize, relationships);
+        final ProbeProcessorState processorState = new ProbeProcessorState(
+                pid, pid, maxMemorySize, relationships, new Alerts());
 
         final byte[] data = new byte[1024];
         final ProbeFlowFile flowFile = processorState.create(System.currentTimeMillis(), Collections.emptyMap(), data);

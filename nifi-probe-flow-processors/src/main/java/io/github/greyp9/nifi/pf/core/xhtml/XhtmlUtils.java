@@ -12,12 +12,16 @@
  */
 package io.github.greyp9.nifi.pf.core.xhtml;
 
+import io.github.greyp9.nifi.pf.core.ProbeUtils;
+import io.github.greyp9.nifi.pf.core.alert.Alert;
+import io.github.greyp9.nifi.pf.core.alert.Alerts;
 import io.github.greyp9.nifi.pf.core.common.Attribute;
 import io.github.greyp9.nifi.pf.core.common.Probe;
 import io.github.greyp9.nifi.pf.core.xml.XmlUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +47,25 @@ public final class XhtmlUtils {
                 new Attribute(Probe.Html.REL, Probe.Html.STYLESHEET),
                 new Attribute(Probe.Html.TYPE, Probe.Mime.TEXT_CSS));
         return head;
+    }
+
+    public static void addAlerts(final Element parent, final Alerts alerts) {
+        final Collection<Alert> alertCollection = alerts.removeAll();
+        if (!alertCollection.isEmpty()) {
+            final Element divAlerts = XmlUtils.addChild(parent, Probe.Html.DIV,
+                    new Attribute(Probe.Html.CLASS, Probe.CSS.ALERTS));
+            alertCollection.forEach(a -> addAlert(divAlerts, a));
+        }
+    }
+
+    private static void addAlert(final Element parent, final Alert alert) {
+        final Element divAlert = XmlUtils.addChild(parent, Probe.Html.DIV);
+        XmlUtils.addChild(divAlert, Probe.Html.SPAN, alert.getIcon(),
+                new Attribute(Probe.Html.CLASS, String.join(" ", Probe.CSS.LEVEL, alert.getSeverity().toString())));
+        XmlUtils.addChild(divAlert, Probe.Html.SPAN, ProbeUtils.toStringZ(alert.getDate()),
+                new Attribute(Probe.Html.CLASS, Probe.CSS.TIMESTAMP));
+        XmlUtils.addChild(divAlert, Probe.Html.SPAN, alert.getMessage(),
+                new Attribute(Probe.Html.CLASS, Probe.CSS.MESSAGE));
     }
 
     public static void addNavBar(final Element parent, final String... links) {

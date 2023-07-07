@@ -26,6 +26,50 @@ padding: 0 0.5em;
 background-color: AppWorkspace;
 }
 
+div.alerts {
+background-color: InfoBackground;
+color: InfoText;
+border: solid thin ButtonText;
+margin: 0.2em 0;
+padding: 0.5em;
+font-family: menu;
+}
+
+div.alerts span.level
+{
+font-family: monospace;
+font-size: larger;
+font-weight: bold;
+}
+
+div.alerts span.INFO
+{
+background-color: blue;
+color: white;
+}
+
+div.alerts span.WARN
+{
+background-color: yellow;
+color: black;
+}
+
+div.alerts span.ERR
+{
+background-color: red;
+color: white;
+}
+
+div.alerts span.timestamp
+{
+padding: 0 0.5em;
+}
+
+div.alerts span.message
+{
+font-weight: bold;
+}
+
 div.navbar {
 background-color: ButtonFace;
 margin: 0 0 0.2em 0;

@@ -84,6 +84,8 @@ public final class ProcessorView {
         XmlUtils.addChild(divHeader, Probe.Html.H1,
                 String.format("%s (id=%s) - NiFi", processorState.getName(), processorState.getId()));
 
+        XhtmlUtils.addAlerts(body, serviceState.getAlerts());
+
         final Element divContent = XmlUtils.addChild(body, Probe.Html.DIV,
                 new Attribute(Probe.Html.CLASS, Probe.CSS.CONTENT));
         addDivState(divContent, processorState);

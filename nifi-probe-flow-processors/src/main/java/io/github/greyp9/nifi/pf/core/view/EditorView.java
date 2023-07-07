@@ -62,6 +62,8 @@ public final class EditorView {
         XmlUtils.addChild(p, Probe.Html.A, "File",
                 new Attribute(Probe.Html.HREF, String.format("/editor/file/%s", processorState.getId())));
 
+        XhtmlUtils.addAlerts(body, serviceState.getAlerts());
+
         final Element divContent = XmlUtils.addChild(body, Probe.Html.DIV,
                 new Attribute(Probe.Html.CLASS, Probe.CSS.CONTENT));
 

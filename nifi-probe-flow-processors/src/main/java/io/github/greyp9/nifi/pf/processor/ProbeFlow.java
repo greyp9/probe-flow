@@ -141,7 +141,7 @@ public final class ProbeFlow extends AbstractProcessor {
         if (count > 0) {
             final List<FlowFile> flowFilesIn = session.get(count);
             for (final FlowFile flowFileIn : flowFilesIn) {
-                probeProcessorState.consumeFlowFile(fromProcessSession(session, flowFileIn));
+                probeProcessorState.addFlowFileProcessSession(fromProcessSession(session, flowFileIn));
                 session.remove(flowFileIn);
             }
             if (!flowFilesIn.isEmpty()) {

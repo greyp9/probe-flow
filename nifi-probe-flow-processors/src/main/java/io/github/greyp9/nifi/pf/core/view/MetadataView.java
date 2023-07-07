@@ -59,6 +59,8 @@ public final class MetadataView {
         XmlUtils.addChild(divHeader, Probe.Html.H1, "FlowFile");
         XmlUtils.addChild(divHeader, Probe.Html.P, "(non-content details associated with this FlowFile)");
 
+        XhtmlUtils.addAlerts(body, serviceState.getAlerts());
+
         final Element divContent = XmlUtils.addChild(body, Probe.Html.DIV,
                 new Attribute(Probe.Html.CLASS, Probe.CSS.CONTENT));
 

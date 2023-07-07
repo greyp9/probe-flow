@@ -43,12 +43,16 @@ public class Probe {
     }
 
     public static class CSS {
+        public static final String ALERTS = "alerts";
         public static final String CONTENT = "content";
         public static final String FOOTER = "footer";
         public static final String HEADER = "header";
         public static final String LEFT = "left";
+        public static final String LEVEL = "level";
+        public static final String MESSAGE = "message";
         public static final String NAVBAR = "navbar";
         public static final String RIGHT = "right";
+        public static final String TIMESTAMP = "timestamp";
     }
 
     public static class Html {
