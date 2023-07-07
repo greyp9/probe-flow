@@ -141,11 +141,11 @@ public final class ProcessorView {
         XmlUtils.addChild(ulActions, Probe.Html.LI, "View the FlowFile content "
                 + "by clicking the link in the 'Content' column for the record.");
         XmlUtils.addChild(ulActions, Probe.Html.LI, "Copy the FlowFile "
-                + "by clicking the 'CLONE' action button for the record.");
+                + "by clicking the 'CLONE' action button for the record (accesskey=C).");
         XmlUtils.addChild(ulActions, Probe.Html.LI, "Delete the FlowFile "
-                + "by clicking the 'DROP' action button for the record.");
+                + "by clicking the 'DROP' action button for the record (accesskey=D).");
         XmlUtils.addChild(ulActions, Probe.Html.LI, "Update the FlowFile editor with the FlowFile data "
-                + "by clicking the 'EDIT' action button for the record.");
+                + "by clicking the 'EDIT' action button for the record (accesskey=E).");
         XmlUtils.addChild(ulActions, Probe.Html.LI, "Route the FlowFile to an outgoing relationship "
                 + "by clicking the button for the relationship.");
 
@@ -198,9 +198,11 @@ public final class ProcessorView {
         final Element tdMetadata = XmlUtils.addChild(tr, Probe.Html.TD);
         final String id = processorState.getId();
         XmlUtils.addChild(tdMetadata, Probe.Html.A, Probe.Icon.METADATA,
+                new Attribute(Probe.Html.ACCESS_KEY, "M"),
                 new Attribute(Probe.Html.HREF, String.format("/viewer/%s/flowfile/metadata/%d", id, flowFile.getId())));
         final Element tdContent = XmlUtils.addChild(tr, Probe.Html.TD);
         XmlUtils.addChild(tdContent, Probe.Html.A, Probe.Icon.CONTENT,
+                new Attribute(Probe.Html.ACCESS_KEY, "T"),
                 new Attribute(Probe.Html.HREF, String.format("/viewer/%s/flowfile/content/%d", id, flowFile.getId())));
 
         XmlUtils.addChild(tr, Probe.Html.TD, Long.toString(flowFile.getId()),
