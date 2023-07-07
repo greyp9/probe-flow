@@ -39,9 +39,9 @@ using the [NiFi Toolkit](https://nifi.apache.org/docs/nifi-docs/html/administrat
 ## Additional Details
 
 - Additional details for the ProbeFlow processor may be
-  found [here](./nifi-probe-flow-processors/src/main/resources/docs/io.github.greyp9.nifi.pf.processor.ProbeFlow/additionalDetails.html).
+  found [here](https://htmlpreview.github.io/?https://github.com/greyp9/probe-flow/blob/main/nifi-probe-flow-processors/src/main/resources/docs/io.github.greyp9.nifi.pf.processor.ProbeFlow/additionalDetails.html).
 - Additional details for the ProbeFlow controller service may be
-  found [here](./nifi-probe-flow-processors/src/main/resources/docs/io.github.greyp9.nifi.pf.service.ProbeFlowService/additionalDetails.html).
+  found [here](https://htmlpreview.github.io/?https://github.com/greyp9/probe-flow/blob/main/nifi-probe-flow-processors/src/main/resources/docs/io.github.greyp9.nifi.pf.service.ProbeFlowService/additionalDetails.html).
 
 ## Usage Scenarios
 
