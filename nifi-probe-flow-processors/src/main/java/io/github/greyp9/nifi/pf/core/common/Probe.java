@@ -36,6 +36,7 @@ public class Probe {
         public static final String RESET = "reset";
         public static final String ROUTE = "route";
         public static final String UPDATE_TEXT = "updateText";
+        public static final String UPDATE_TEXT_BASE64 = "updateTextBase64";
         public static final String UPLOAD_FILE = "uploadFile";
 
         public static final String COLUMN_NAME = "Name";

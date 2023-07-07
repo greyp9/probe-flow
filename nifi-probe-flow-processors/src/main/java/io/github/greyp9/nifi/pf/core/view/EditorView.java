@@ -204,6 +204,10 @@ public final class EditorView {
                 new Attribute(Probe.Html.NAME, Probe.App.UPDATE_TEXT),
                 new Attribute(Probe.Html.TYPE, Probe.Form.SUBMIT),
                 new Attribute(Probe.Html.VALUE, "Update Content"));
+        XmlUtils.addChild(divFormEdit2, Probe.Html.INPUT,
+                new Attribute(Probe.Html.NAME, Probe.App.UPDATE_TEXT_BASE64),
+                new Attribute(Probe.Html.TYPE, Probe.Form.SUBMIT),
+                new Attribute(Probe.Html.VALUE, "Update Content (From Base64)"));
     }
 
     private void addTableMetadata(final Element div, final ProbeFlowFileEditor editor) {

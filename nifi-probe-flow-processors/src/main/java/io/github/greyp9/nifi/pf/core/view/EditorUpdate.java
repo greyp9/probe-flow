@@ -20,6 +20,7 @@ import io.github.greyp9.nifi.pf.core.state.ProbeProcessorState;
 
 import javax.servlet.http.Part;
 import java.io.IOException;
+import java.util.Base64;
 import java.util.Collection;
 import java.util.Map;
 
@@ -45,6 +46,9 @@ public final class EditorUpdate {
             //logger.trace("TEXT: size=[{}], sha256=[{}]",
             //        text.length(), ProbeUtils.sha256(text.getBytes(StandardCharsets.UTF_8)));
             flowFileEditor.setContent(ProbeUtils.toBytesUTF8(text));
+        } else if (parameters.containsKey(Probe.App.UPDATE_TEXT_BASE64)) {
+            final String text = ServletUtils.getParameter(Probe.Form.TEXT, parameters).trim();
+            flowFileEditor.setContent(Base64.getDecoder().decode(text));
         } else if (parameters.containsKey(Probe.App.CREATE)) {
             final Map<String, String> attributes = flowFileEditor.getAttributes();
             final byte[] content = flowFileEditor.getContent().toByteArray();
