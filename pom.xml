@@ -29,14 +29,14 @@
     <packaging>pom</packaging>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <jetty.version>9.4.50.v20221201</jetty.version>
-        <junit.version>5.9.3</junit.version>
-        <nifi.version>1.19.1</nifi.version>
+        <jetty.version>10.0.16</jetty.version>
+        <junit.version>5.10.0</junit.version>
+        <nifi.version>2.0.0-SNAPSHOT</nifi.version>
     </properties>
 
     <modules>
