@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+      http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<head>
+    <meta charset="utf-8"/>
+    <title>ProbeFlow Service</title>
+
+    <link rel="stylesheet" href="../../../../../css/component-usage.css" type="text/css"/>
+</head>
+<body>
+
+<h1>ProbeFlow Service</h1>
+
+<p>When running, this service provides a simple web interface at the port specified in the service properties (by
+    default, port 18443). The <a href="https://localhost:18443">home page of the UI</a> provides access to the state
+    of any active ProbeFlow processors. When not running, this service is inert; the specified port will not respond
+    to incoming connections. This service must be enabled in order to start any dependent ProbeFlow processors.</p>
+
+<p>An SSL Context Service must be defined in order enable ProbeFlow Service. The specified SSL context service is used
+    to configure the ProbeFlow Service web interface, to provide TLS-secured client connections.</p>
+
+<p>From the controller service home page, the following actions are available:</p>
+<ul>
+    <li>View the processor state for an active processor by clicking its processor id in the "Active Processors" list.
+    </li>
+    <li>Download / Upload processor state by clicking the up/down arrow icons in the "Active Processors" list.</li>
+    <li>Navigate to the FlowFile editor for a processor by clicking the editor icon in the "Active Processors" list.
+    </li>
+</ul>
+
+<h2>Download / Upload State</h2>
+<p>From the "Processor State" view for a processor, options are available to download the held FlowFiles for the
+    processor. This option allows test FlowFiles to be persisted to local filesystem of the user, to facilitate future
+    reuse.</p>
+
+<p>To Download the FlowFiles for a processor, right-click the "Download" link on the "Processor State" page, and select
+    the "Save Link As..." option. (Browsers typically offer the opportunity to appropriately name the downloaded
+    file.)</p>
+
+<p>To Upload the FlowFiles from a previous ProbeFlow download, use the file selection interface on the "Processor
+    State" page under the "Upload" header. Select the appropriate file from the web browser filesystem, and click the
+    "Upload Content" button. The previously downloaded FlowFiles (attributes and content) are added to the processor
+    state.</p>
+
+<h2>More Information</h2>
+<p>See the documentation for ProbeFlow for additional information.</p>
+
+</body>
+</html>

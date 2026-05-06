@@ -19,11 +19,11 @@
 
     <parent>
         <groupId>io.github.greyp9</groupId>
-        <artifactId>nifi2-probe-flow</artifactId>
+        <artifactId>nifi27-probe-flow</artifactId>
         <version>0.3.0</version>
     </parent>
 
-    <artifactId>nifi2-probe-flow-processors</artifactId>
+    <artifactId>nifi27-probe-flow-processors</artifactId>
     <properties>
         <maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ss'Z'</maven.build.timestamp.format>
 
@@ -49,8 +49,8 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>org.eclipse.jetty.ee10</groupId>
-                <artifactId>jetty-ee10-bom</artifactId>
+                <groupId>org.eclipse.jetty.ee11</groupId>
+                <artifactId>jetty-ee11-bom</artifactId>
                 <version>${jetty.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -63,17 +63,17 @@
             <dependency>
                 <groupId>org.apache.nifi</groupId>
                 <artifactId>nifi-security-utils-api</artifactId>
-                <version>${nifi2.version}</version>
+                <version>${nifi27.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.nifi</groupId>
                 <artifactId>nifi-ssl-context-service-api</artifactId>
-                <version>${nifi2.version}</version>
+                <version>${nifi27.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.nifi</groupId>
                 <artifactId>nifi-xml-processing</artifactId>
-                <version>${nifi2.version}</version>
+                <version>${nifi27.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -119,8 +119,8 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.jetty.ee10</groupId>
-            <artifactId>jetty-ee10-servlet</artifactId>
+            <groupId>org.eclipse.jetty.ee11</groupId>
+            <artifactId>jetty-ee11-servlet</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>

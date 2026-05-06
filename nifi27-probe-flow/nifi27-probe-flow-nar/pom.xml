@@ -17,34 +17,31 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.greyp9</groupId>
-    <artifactId>nifi-probe-flow-base</artifactId>
-    <version>0.3.0</version>
-    <packaging>pom</packaging>
+    <parent>
+        <groupId>io.github.greyp9</groupId>
+        <artifactId>nifi27-probe-flow</artifactId>
+        <version>0.3.0</version>
+    </parent>
 
+    <artifactId>nifi27-probe-flow-nar</artifactId>
+    <packaging>nar</packaging>
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-        <junit.version>5.14.4</junit.version>
+        <maven.javadoc.skip>true</maven.javadoc.skip>
+        <source.skip>true</source.skip>
     </properties>
 
-    <modules>
-        <module>nifi1-probe-flow</module>
-        <module>nifi2-probe-flow</module>
-        <module>nifi27-probe-flow</module>
-        <module>probe-flow</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.nifi</groupId>
+            <artifactId>nifi-standard-shared-nar</artifactId>
+            <version>${nifi27.version}</version>
+            <type>nar</type>
+        </dependency>
+        <dependency>
+            <groupId>io.github.greyp9</groupId>
+            <artifactId>nifi27-probe-flow-processors</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.junit</groupId>
-                <artifactId>junit-bom</artifactId>
-                <version>${junit.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 </project>
