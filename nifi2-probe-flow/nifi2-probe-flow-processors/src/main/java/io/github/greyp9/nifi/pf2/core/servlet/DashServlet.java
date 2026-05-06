@@ -1,11 +1,11 @@
 package io.github.greyp9.nifi.pf2.core.servlet;
 
-import io.github.greyp9.nifi.pf2.core.common.Attribute;
-import io.github.greyp9.nifi.pf2.core.common.Probe;
-import io.github.greyp9.nifi.pf2.core.http.HttpResponse;
+import io.github.greyp9.nifi.pf.core.common.Attribute;
+import io.github.greyp9.nifi.pf.core.common.Probe;
+import io.github.greyp9.nifi.pf.core.http.HttpResponse;
+import io.github.greyp9.nifi.pf.core.xhtml.XhtmlUtils;
+import io.github.greyp9.nifi.pf.core.xml.XmlUtils;
 import io.github.greyp9.nifi.pf2.core.state.ProbeServiceState;
-import io.github.greyp9.nifi.pf2.core.xhtml.XhtmlUtils;
-import io.github.greyp9.nifi.pf2.core.xml.XmlUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;

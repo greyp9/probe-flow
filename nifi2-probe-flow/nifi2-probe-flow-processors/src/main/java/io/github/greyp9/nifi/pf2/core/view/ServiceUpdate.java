@@ -12,8 +12,8 @@
  */
 package io.github.greyp9.nifi.pf2.core.view;
 
-import io.github.greyp9.nifi.pf2.core.ProbeUtils;
-import io.github.greyp9.nifi.pf2.core.common.Probe;
+import io.github.greyp9.nifi.pf.core.common.Probe;
+import io.github.greyp9.nifi.pf.core.ProbeUtils;
 import io.github.greyp9.nifi.pf2.core.state.ProbeProcessorState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

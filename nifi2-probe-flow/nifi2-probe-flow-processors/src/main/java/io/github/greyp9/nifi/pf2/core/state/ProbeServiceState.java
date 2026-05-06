@@ -1,6 +1,6 @@
 package io.github.greyp9.nifi.pf2.core.state;
 
-import io.github.greyp9.nifi.pf2.core.alert.Alerts;
+import io.github.greyp9.nifi.pf.core.alert.Alerts;
 import org.apache.nifi.processor.Relationship;
 
 import java.util.Collection;

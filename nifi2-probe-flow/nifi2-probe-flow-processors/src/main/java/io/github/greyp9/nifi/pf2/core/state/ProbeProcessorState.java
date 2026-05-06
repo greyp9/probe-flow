@@ -12,9 +12,9 @@
  */
 package io.github.greyp9.nifi.pf2.core.state;
 
-import io.github.greyp9.nifi.pf2.core.alert.Alert;
-import io.github.greyp9.nifi.pf2.core.alert.Alerts;
-import io.github.greyp9.nifi.pf2.core.common.Probe;
+import io.github.greyp9.nifi.pf.core.alert.Alert;
+import io.github.greyp9.nifi.pf.core.alert.Alerts;
+import io.github.greyp9.nifi.pf.core.common.Probe;
 import io.github.greyp9.nifi.pf2.core.flowfile.ProbeFlowFile;
 import io.github.greyp9.nifi.pf2.core.flowfile.ProbeFlowFileEditor;
 import org.apache.nifi.processor.Relationship;

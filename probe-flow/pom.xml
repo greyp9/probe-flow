@@ -17,33 +17,31 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.greyp9</groupId>
-    <artifactId>nifi-probe-flow-base</artifactId>
-    <version>0.3.0</version>
-    <packaging>pom</packaging>
+    <parent>
+        <groupId>io.github.greyp9</groupId>
+        <artifactId>nifi-probe-flow-base</artifactId>
+        <version>0.3.0</version>
+    </parent>
 
+    <artifactId>probe-flow</artifactId>
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-        <junit.version>5.14.4</junit.version>
+        <maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ss'Z'</maven.build.timestamp.format>
     </properties>
 
-    <modules>
-        <module>nifi1-probe-flow</module>
-        <module>nifi2-probe-flow</module>
-        <module>probe-flow</module>
-    </modules>
-
     <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.junit</groupId>
-                <artifactId>junit-bom</artifactId>
-                <version>${junit.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
+        <dependencies/>
     </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>at.favre.lib</groupId>
+            <artifactId>bytes</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.nifi</groupId>
+            <artifactId>nifi-xml-processing</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+    </dependencies>
 </project>

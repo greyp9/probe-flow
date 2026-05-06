@@ -12,16 +12,16 @@
  */
 package io.github.greyp9.nifi.pf2.core.view;
 
-import io.github.greyp9.nifi.pf2.core.ProbeUtils;
-import io.github.greyp9.nifi.pf2.core.common.Attribute;
-import io.github.greyp9.nifi.pf2.core.common.Probe;
+import io.github.greyp9.nifi.pf.core.ProbeUtils;
+import io.github.greyp9.nifi.pf.core.common.Attribute;
+import io.github.greyp9.nifi.pf.core.common.Probe;
+import io.github.greyp9.nifi.pf.core.http.HttpResponse;
+import io.github.greyp9.nifi.pf.core.xhtml.XhtmlUtils;
+import io.github.greyp9.nifi.pf.core.xml.XmlUtils;
 import io.github.greyp9.nifi.pf2.core.flowfile.ProbeFlowFile;
-import io.github.greyp9.nifi.pf2.core.http.HttpResponse;
 import io.github.greyp9.nifi.pf2.core.servlet.ServletUtils;
 import io.github.greyp9.nifi.pf2.core.state.ProbeProcessorState;
 import io.github.greyp9.nifi.pf2.core.state.ProbeServiceState;
-import io.github.greyp9.nifi.pf2.core.xhtml.XhtmlUtils;
-import io.github.greyp9.nifi.pf2.core.xml.XmlUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 

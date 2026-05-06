@@ -12,8 +12,8 @@
  */
 package io.github.greyp9.nifi.pf2.core.servlet;
 
-import io.github.greyp9.nifi.pf2.core.common.Probe;
-import io.github.greyp9.nifi.pf2.core.http.HttpResponse;
+import io.github.greyp9.nifi.pf.core.common.Probe;
+import io.github.greyp9.nifi.pf.core.http.HttpResponse;
 import io.github.greyp9.nifi.pf2.core.state.ProbeProcessorState;
 import io.github.greyp9.nifi.pf2.core.state.ProbeServiceState;
 import io.github.greyp9.nifi.pf2.core.view.ServiceUpdate;

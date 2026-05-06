@@ -36,7 +36,7 @@ public final class ProbeUtils {
 
     public static byte[] toBytes(final Class<?> c, final String resource) throws IOException {
         final URL url = Objects.requireNonNull(c.getClassLoader().getResource(resource));
-        return ProbeUtils.toBytes(Objects.requireNonNull(url.openStream()));
+        return toBytes(Objects.requireNonNull(url.openStream()));
     }
 
     public static byte[] toBytes(final InputStream is) throws IOException {

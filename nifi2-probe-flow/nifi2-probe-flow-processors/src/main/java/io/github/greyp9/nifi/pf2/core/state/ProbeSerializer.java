@@ -12,15 +12,16 @@
  */
 package io.github.greyp9.nifi.pf2.core.state;
 
-import io.github.greyp9.nifi.pf2.core.common.Attribute;
-import io.github.greyp9.nifi.pf2.core.common.Probe;
+import io.github.greyp9.nifi.pf.core.common.Attribute;
+import io.github.greyp9.nifi.pf.core.common.Probe;
+import io.github.greyp9.nifi.pf.core.xml.ProbeXml;
+import io.github.greyp9.nifi.pf.core.xml.XPather;
+import io.github.greyp9.nifi.pf.core.xml.XmlUtils;
 import io.github.greyp9.nifi.pf2.core.flowfile.ProbeFlowFile;
-import io.github.greyp9.nifi.pf2.core.xml.ProbeXml;
-import io.github.greyp9.nifi.pf2.core.xml.XPather;
-import io.github.greyp9.nifi.pf2.core.xml.XmlUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import javax.xml.namespace.NamespaceContext;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -28,7 +29,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.xml.namespace.NamespaceContext;
 
 public class ProbeSerializer {
 
