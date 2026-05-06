@@ -49,7 +49,7 @@ using the [NiFi Toolkit](https://nifi.apache.org/docs/nifi-docs/html/administrat
 
 While testing the output of an upstream component, it is possible to save a set of useful FlowFiles for future testing.
 
-[This XML file](./nifi-probe-flow-processors/src/test/resources/export/probeflow.records.xml) is an example of such an
+[This XML file](nifi1-probe-flow-processors/src/test/resources/export/probeflow.records.xml) is an example of such an
 archived FlowFile set. It contains a single FlowFile, which specifies five test records. It may be uploaded from the
 main page of the `ProbeFlow` web interface.
 

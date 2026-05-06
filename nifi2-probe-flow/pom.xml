@@ -20,12 +20,12 @@
     <parent>
         <groupId>org.apache.nifi</groupId>
         <artifactId>nifi-standard-shared-bom</artifactId>
-        <version>2.4.0</version>
+        <version>2.7.2</version>
     </parent>
 
     <groupId>io.github.greyp9</groupId>
-    <artifactId>nifi-probe-flow</artifactId>
-    <version>0.20.0</version>
+    <artifactId>nifi2-probe-flow</artifactId>
+    <version>0.3.0</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -36,15 +36,14 @@
 
         <jakarta.servlet.version>6.1.0</jakarta.servlet.version>
         <jetty.version>12.1.5</jetty.version>  <!-- match org.apache.nifi:nifi:2.7.2 -->
-        <junit.version>5.11.4</junit.version>  <!-- match org.apache.nifi:nifi:2.0.0 -->
         <slf4j.version>2.0.17</slf4j.version>  <!-- match org.apache.nifi:nifi:2.7.2 -->
         <nifi.api.version>2.5.0</nifi.api.version>  <!-- match org.apache.nifi:nifi:2.7.2 -->
-        <nifi.version>2.7.2</nifi.version>
+        <nifi2.version>2.7.2</nifi2.version>
     </properties>
 
     <modules>
-        <module>nifi-probe-flow-nar</module>
-        <module>nifi-probe-flow-processors</module>
+        <module>nifi2-probe-flow-nar</module>
+        <module>nifi2-probe-flow-processors</module>
     </modules>
 
     <distributionManagement>

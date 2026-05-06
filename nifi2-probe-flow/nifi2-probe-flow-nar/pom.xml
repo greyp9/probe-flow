@@ -19,11 +19,11 @@
 
     <parent>
         <groupId>io.github.greyp9</groupId>
-        <artifactId>nifi-probe-flow</artifactId>
-        <version>0.2.0</version>
+        <artifactId>nifi2-probe-flow</artifactId>
+        <version>0.3.0</version>
     </parent>
 
-    <artifactId>nifi-probe-flow-nar</artifactId>
+    <artifactId>nifi2-probe-flow-nar</artifactId>
     <packaging>nar</packaging>
     <properties>
         <maven.javadoc.skip>true</maven.javadoc.skip>
@@ -32,14 +32,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.nifi</groupId><!---->
-            <artifactId>nifi-standard-services-api-nar</artifactId>
-            <version>${nifi.version}</version>
+            <groupId>org.apache.nifi</groupId>
+            <artifactId>nifi-standard-shared-nar</artifactId>
+            <version>${nifi2.version}</version>
             <type>nar</type>
         </dependency>
         <dependency>
             <groupId>io.github.greyp9</groupId>
-            <artifactId>nifi-probe-flow-processors</artifactId>
+            <artifactId>nifi2-probe-flow-processors</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

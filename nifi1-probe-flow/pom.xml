@@ -24,8 +24,8 @@
     </parent>
 
     <groupId>io.github.greyp9</groupId>
-    <artifactId>nifi-probe-flow</artifactId>
-    <version>0.2.0</version>
+    <artifactId>nifi1-probe-flow</artifactId>
+    <version>0.3.0</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -35,13 +35,12 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <jetty.version>9.4.50.v20221201</jetty.version>
-        <junit.version>5.11.4</junit.version>
-        <nifi.version>1.28.1</nifi.version>
+        <nifi1.version>1.28.1</nifi1.version>
     </properties>
 
     <modules>
-        <module>nifi-probe-flow-nar</module>
-        <module>nifi-probe-flow-processors</module>
+        <module>nifi1-probe-flow-nar</module>
+        <module>nifi1-probe-flow-processors</module>
     </modules>
 
     <distributionManagement>
